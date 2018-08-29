@@ -17,14 +17,17 @@ class EventStepper:
                 server_object = wrapper_object.server_object
                 server_slot_list = server_object.server_slots
 
-                if len(server_slot_list > 0):
+                if len(server_slot_list) > 0:
                     for customer in server_slot_list:
                         time_val = customer.server_time_seconds
                         time_val_list.append(time_val)
 
         # minimum val becomes the step value. Decrease all Server Customer time vals by min_time_val, and step
         # simulation forward by min_time_val
-        minimum_time_val_seconds = min(time_val_list)
+        if len(time_val_list) == 0:
+            minimum_time_val_seconds = 0
+        else:
+            minimum_time_val_seconds = min(time_val_list)
 
         for wrapper_object in server_and_queue_wrapper_list:
 
@@ -32,13 +35,13 @@ class EventStepper:
                 server_object = wrapper_object.server_object
                 server_slot_list = server_object.server_slots
 
-                if len(server_slot_list > 0):
+                if len(server_slot_list) > 0:
                     for customer in server_slot_list:
-                        current_time_val = customer.server_time_seconds
-                        deducted_time_val = current_time_val - minimum_time_val_seconds
+                        curr_val = customer.get_server_time()
+                        deducted = curr_val - minimum_time_val_seconds
 
                         # override current duration with deducted val
-                        customer.server_time_seconds = deducted_time_val
+                        customer.set_server_time(deducted)
 
         return minimum_time_val_seconds
 

@@ -13,16 +13,27 @@ class Server:
     def add_customer(self, customer):
         if len(self.server_slots) < self.capacity:
             # add customer with randomized time
-            customer.server_time_seconds = self.time_randomizer.generate_random_sample
+            random = self.generate_random()
+
+            customer.server_time_seconds = random
             self.server_slots.append(customer)
 
             return True
         else:
             return False
 
+    def generate_random(self):
+        return self.time_randomizer.generate_random_sample()
+
     def remove_customer(self, customer):
         if len(self.server_slots) > 0:
             self.server_slots.remove(customer)
+            return True
+        else:
+            return False
+
+    def is_server_full(self):
+        if len(self.server_slots) == self.capacity:
             return True
         else:
             return False
