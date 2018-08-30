@@ -33,27 +33,26 @@ The `UtilityClasses` are various classes used as the building blocks for buildin
 ### Building the System
 <br>
 
-Begin by defining an empty list, which will hold all `Server` and `PriorityQueue` objects we will build. Note: this list represents the sequence of events in the simulation, thus objects must be added in order of occurence within the system.
+Begin by defining an empty list, which will hold all `Server` and `PriorityQueue` objects we will build. **Note**: this list represents the sequence of events in the simulation, thus objects must be added in order of occurrence within the system.
 
 ```python
 server_queue_wrapper_list = []
 ```
-
-<br><br>
+<br>
 
 Next we will begin building the logic that stochastically introduces customers into the system. First, we must define a `TimeRandomizer` object that will determine the distribution and it's parameters used for this sampling. In this case, we will use a normal distribution and state that customers arrive to the lemonade stand with a mean of every 20 seconds and a standard deviation of 5 seconds:
 
 ```python
 arrival_time_randomizer = TimeRandomizer("normal", normal_mean=20, normal_stddev=5)
 ```
-<br><br>
+<br>
 
 After defining the randomizer, we will build the arrival server. The first parameter is capacity for the server, and must always be 1 for an arrival server. The second parameter is an object of type `TimeRandomizer`, which we have defined as `arrival_time_randomizer`. The third parameter is an optional text description for the server.
 
 ```python
 arrival_server = Server(1, arrival_time_randomizer, description="Arrival Server")
 ```
-<br><br>
+<br>
 
 Now that the server object is built, wrap it in a `ServerAndQueueWrapper` object and add it to `server_queue_wrapper_list`:
 
@@ -61,8 +60,53 @@ Now that the server object is built, wrap it in a `ServerAndQueueWrapper` object
 arrival_wrapper = ServerAndQueueWrapper(server_object=arrival_server)
 server_queue_wrapper_list.append(arrival_wrapper)
 ```
+<br>
 
+In general, a queue should always immediately follow a server. Servers *can* be chained in succession, but if a customer cannot move from one server to the other due to capacity constraints, it will remain in the first server with a zero duration and will cause the simulation to run infinitely as no other events will be able to be processed. Thus, we will build a queue for the lemonade stand line, and it is as simple as defining a `PriorityQueue` object with an optional description parameter:
 
+```python
+arrival_queue = PriorityQueue(description="Lemonade Stand Line")
+```
+<br>
 
+Now, customers that are created by our first server will be inserted into the `arrival_queue` to await being served lemonade. Similar to creating the arrival server, wrap the `arrival_queue` and append to `server_queue_wrapper_list`:
 
+```python
+queue_wrapper = ServerAndQueueWrapper(queue_object=arrival_queue)
+server_queue_wrapper_list.append(queue_wrapper)
+```
+<br>
+The next step is to build a server that represents the customers being served lemonade. As soon as this server has available capacity, the next customer in line in the `arrival_queue` will leave the queue and enter the server for getting their lemonade. Again, we must first define a `TimeRandomizer` object to generate random samples for how long it takes for each customer to be served lemonade. This time, we will use a triangular distribution with `min=30, mode=40, max=70`:
 
+```python
+main_process_randomizer = TimeRandomizer("triangular", triangle_min=30, triangle_mode=40, triangle_max=70)
+```
+<br>
+
+Since this is not an arrival server, capacity can be set at any level. Since we have a quick rate of customers arriving, we will initially set the server capacity at `4` (which can be thought of as 4 employees serving lemonade). We'll also wrap the object and add to our list of processes:
+
+```python
+main_process_server = Server(4, main_process_randomizer, "Main process Server (serving Lemonade)")
+main_process_wrapper = ServerAndQueueWrapper(server_object=main_process_server)
+server_queue_wrapper_list.append(main_process_wrapper)
+```
+<br>
+
+### Simulation Configuration
+<br>
+
+Now that we have built a list of `Server` and `PriorityQueue` objects, we are ready to build the configuration object. First it is necessary to define the start and end time for each run using the `datetime` library. **Note**: a longer duration for each run time will take longer to run, however, increasingly complicated simulations can take longer to spin up to true system behavior, so longer run durations may be necessary.
+
+```python
+start_time = datetime.datetime(year=2018, month=7, day=1, hour=12, minute=0, second=0)
+end_time = datetime.datetime(year=2018, month=7, day=2, hour=12, minute=0, second=0)
+```
+<br>
+
+At this point we can construct the `SimApplication` object and run the model. This class accepts as parameters our start and end time for each run, total runs to perform, our list of queues and servers, as well as two boolean values for optional chart output. For now we will only configure `output_plot=true` and leave `mean_stabilization_tracking=False`, which will create a histogram of the simulation output. As an inital value, set number of runs equal to 50:
+
+```python
+sim = SimApplication(start_time, end_time, 50, server_queue_wrapper_list,
+                     output_plot=True, mean_stabilization_tracking=False)
+```
+<br>
