@@ -106,7 +106,7 @@ end_time = datetime.datetime(year=2018, month=7, day=2, hour=12, minute=0, secon
 ```
 <br>
 
-At this point we can construct the `SimApplication` object and run the model. This class accepts as parameters our start and end time for each run, total runs to perform, our list of queues and servers, as well as two boolean values for optional chart output. For now we will only configure `output_plot=true` and leave `mean_stabilization_tracking=False`, which will create a histogram of the simulation output. As an inital value, set number of runs equal to 50:
+At this point we can construct the `SimApplication` object and run the model. This class accepts as parameters our start and end time for each run, total runs to perform, our list of queues and servers, as well as two boolean values for optional chart output. For now we will only configure `output_plot=True` and leave `mean_stabilization_tracking=False`, which will create a histogram of the simulation output. As an inital value, set number of runs equal to 50:
 
 ```python
 sim = SimApplication(start_time, end_time, 50, server_queue_wrapper_list,
