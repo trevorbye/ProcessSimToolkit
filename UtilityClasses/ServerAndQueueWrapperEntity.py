@@ -1,6 +1,14 @@
 class ServerAndQueueWrapper:
 
     def __init__(self, queue_object=None, server_object=None):
+        """
+        Constructor takes either a PriorityQueue or Server object, but will throw a warning if both params are provided.
+
+        :param queue_object: PriorityQueue object
+        :type queue_object: class[PriorityQueue]
+        :param server_object: Server object
+        :type server_object: class[Server]
+        """
         self.is_server = None
         self.queue_object = queue_object
         self.server_object = server_object

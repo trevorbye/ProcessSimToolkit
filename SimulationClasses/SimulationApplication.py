@@ -14,6 +14,10 @@ class SimApplication:
                  mean_stabilization_tracking):
         """
         Main container class for simulation. Accepts config and provides run() method.
+        **Note on mean stabilization: this requires intensive plotting, and is not meant to be run all the time. In
+        general you would run this a couple times when testing out a new sim scenario to determine optimal number of
+        runs, and then switch off.
+
 
         :param start_time: start of sim
         :type start_time: datetime.pyi
@@ -25,7 +29,8 @@ class SimApplication:
         :type server_and_queue_wrapper_list: list
         :param output_plot: include output plot
         :type output_plot: bool
-        :param mean_stabilization_tracking: include mean stabilization plot
+        :param mean_stabilization_tracking: Include mean stabilization plot. If set to True, histogram plot will not be
+        included
         :type mean_stabilization_tracking: bool
         """
 
@@ -87,7 +92,7 @@ class SimApplication:
                 plot.scatter(current_x_pos, current_mean)
                 plot.axis([0, self.runs, new_y_min, new_y_max])
 
-                plot.pause(0.05)
+                plot.pause(0.005)
 
         # print aggregated output
         print(self.report_entity.list_customer_system_time_seconds)

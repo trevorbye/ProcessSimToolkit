@@ -6,6 +6,15 @@ class EventStepper:
     # function accepts a list of ServerAndQueueWrapper objects
     @staticmethod
     def evaluate_time_steps(server_and_queue_wrapper_list):
+        """
+        This function iterates through all Servers, and finds the Customer with the lowest duration left in Server.
+        This value is then deducted from all Customer's Server durations, returned from this function, and then
+        used to increment the main sim clock.
+
+        :param server_and_queue_wrapper_list: list of ServerAndQueueWrapper objects
+        :type server_and_queue_wrapper_list: list
+        :return: int
+        """
 
         # first build all time vals
         time_val_list = []

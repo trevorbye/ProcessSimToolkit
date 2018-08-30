@@ -6,10 +6,11 @@ class TimeRandomizer:
     def __init__(self, numpy_random_distribution, normal_mean=None, normal_stddev=None, gamma_shape=None,
                  gamma_scale=None, triangle_min=None, triangle_mode=None, triangle_max=None, uniform_min=None,
                  uniform_max=None):
-        """Constructor is only setup for common distributions. Refer to numpy.random docs for other dist types,
+        """
+        Constructor is only setup for common distributions. Refer to numpy.random docs for other dist types,
         and create member variables, constructor params, and modify generate_random_sample() accordingly.
 
-        :param numpy_random_distribution: string
+        :param numpy_random_distribution: str
         """
 
         self.distribution_type = numpy_random_distribution
@@ -28,7 +29,12 @@ class TimeRandomizer:
         self.uniform_max = uniform_max
 
     def generate_random_sample(self):
-        """Generates random sample from distribution type using inverse cumulative probability."""
+        """
+        Generates random sample from distribution type using inverse cumulative probability.
+
+        :return int
+        """
+
         sample = None
 
         if self.distribution_type == "normal":
@@ -48,6 +54,3 @@ class TimeRandomizer:
             return round(val)
         except:
             return round(sample)
-
-
-
