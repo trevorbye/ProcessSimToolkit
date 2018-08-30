@@ -78,6 +78,7 @@ queue_wrapper = ServerAndQueueWrapper(queue_object=arrival_queue)
 server_queue_wrapper_list.append(queue_wrapper)
 ```
 <br>
+
 The next step is to build a server that represents the customers being served lemonade. As soon as this server has available capacity, the next customer in line in the `arrival_queue` will leave the queue and enter the server for getting their lemonade. Again, we must first define a `TimeRandomizer` object to generate random samples for how long it takes for each customer to be served lemonade. This time, we will use a triangular distribution with `min=30, mode=40, max=70`:
 
 ```python
