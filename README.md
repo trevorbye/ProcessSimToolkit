@@ -43,7 +43,8 @@ Next we will begin building the logic that stochastically introduces customers i
 arrival_time_randomizer = TimeRandomizer("normal", normal_mean=20, normal_stddev=5)
 ```
 <br>
-After defining the randomizer, we will build the arrival server. The first parameter is capacity for the server, and must always be 1 for an arrival server. The second parameter is an object of type `TimeRandomizer`, which we have defined as `arrival_time_randomizer`
+After defining the randomizer, we will build the arrival server. The first parameter is capacity for the server, and must always be 1 for an arrival server. The second parameter is an object of type `TimeRandomizer`, which we have defined as `arrival_time_randomizer`.
+
 
 
 
