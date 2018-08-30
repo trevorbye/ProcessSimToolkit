@@ -5,3 +5,10 @@ This is a simplified tool for running stochastic discrete-event process simulati
 ## Lemonade Stand Tutorial
 
 Full code for this tutorial can be accessed [here.](https://github.com/trevorbye/ProcessSimToolkit/blob/master/LemonadeStandTutorial/LemonadeStandSim.py)
+
+### Getting Started
+
+This is a tutorial for simulating the flow of customers through a lemonade stand. Although a simple example, it serves to illustrate the design pattern for this toolkit, and simply adding more Servers/Queues will allow for significantly more complex simulations. To get started, fork this entire project.
+
+After you have access to all classes, begin by importing the necesary libraries and classes:
+
