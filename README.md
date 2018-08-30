@@ -95,7 +95,7 @@ server_queue_wrapper_list.append(main_process_wrapper)
 ### Simulation Configuration
 <br>
 
-Now that we have built a list of `Server` and `PriorityQueue` objects, we are ready to build the configuration object. First it is necessary to define the start and end time for each run using the `datetime` library. **Note**: a longer duration for each run time will take longer to run, however, increasingly complicated simulations can take longer to spin up to true system behavior, so longer run durations may be necessary.
+Now that we have built a list of `Server` and `PriorityQueue` objects, we are ready to build the configuration object. First it is necessary to define the start and end time for each run using the `datetime` library. **Note**: a longer duration for each run iteration will take longer to run the model, however, increasingly complicated simulations can take longer to reach true system behavior, therefore longer run durations may be necessary depending on your model.
 
 ```python
 start_time = datetime.datetime(year=2018, month=7, day=1, hour=12, minute=0, second=0)
@@ -110,3 +110,14 @@ sim = SimApplication(start_time, end_time, 50, server_queue_wrapper_list,
                      output_plot=True, mean_stabilization_tracking=False)
 ```
 <br>
+
+Now simply call the `run_sim()` method to run the model:
+
+```python
+sim.run_sim()
+```
+<br>
+
+### Plot Output
+
+
