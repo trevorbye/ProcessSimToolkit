@@ -47,7 +47,7 @@ start_time = datetime.datetime(year=2018, month=7, day=1, hour=12, minute=0, sec
 end_time = datetime.datetime(year=2018, month=7, day=2, hour=12, minute=0, second=0)
 
 # create sim object, specify number of runs, specify True/False for histogram plot
-sim = SimApplication(start_time, end_time, 500, server_queue_wrapper_list,
+sim = SimApplication(start_time, end_time, 50, server_queue_wrapper_list,
                      output_plot=True, mean_stabilization_tracking=True)
 
 # run configured setup
