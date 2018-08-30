@@ -36,6 +36,7 @@ Begin by defining an empty list, which will hold all `Server` and `PriorityQueue
 ```python
 server_queue_wrapper_list = []
 ```
+
 <br>
 Next we will begin building the logic that stochastically introduces customers into the system. First, we must define a `TimeRandomizer` object that will determine the distribution and it's parameters used for this sampling. In this case, we will use a normal distribution and state that customers arrive to the lemonade stand with a mean of every 20 seconds and a standard deviation of 5 seconds:
 
@@ -43,6 +44,7 @@ Next we will begin building the logic that stochastically introduces customers i
 arrival_time_randomizer = TimeRandomizer("normal", normal_mean=20, normal_stddev=5)
 ```
 <br>
+
 After defining the randomizer, we will build the arrival server. The first parameter is capacity for the server, and must always be 1 for an arrival server. The second parameter is an object of type `TimeRandomizer`, which we have defined as `arrival_time_randomizer`.
 
 
