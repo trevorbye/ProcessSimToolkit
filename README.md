@@ -120,4 +120,8 @@ sim.run_sim()
 
 ### Plot Output
 
+Running the model will produce a distribution plot of the duration (in seconds) customers spent in the system to get served lemonade:
+
+
+
 
