@@ -128,7 +128,7 @@ Running the model will produce a distribution plot of the duration (in seconds) 
 
 In order to determine if run size for the model is sufficient, we can toggle the mean stabilization plot. A simple visual method of determining optimal run size is tracking an output statistic (typically mean or standard deviation), and monitoring when it stops experiencing significant changes. The differences are small between each run, but by ensuring stability of an output statistic, you can ensure your model has experienced all possible extreme behaviors and events. 
 
-To toggle this plotting capability, modify the `mean_stabilization_tracking` parameter and set to `True` (this will override and turn of the histogram plot). Additionally, increase the runs to 500 to track a longer run duration. Run the model again and live plotting will begin:
+To toggle this plotting capability, modify the `mean_stabilization_tracking` parameter and set to `True` (this will override and turn off the histogram plot). Additionally, increase the runs to 500 to track a longer run duration. Run the model again and live plotting will begin:
 
 ```python
 sim = SimApplication(start_time, end_time, 500, server_queue_wrapper_list,
@@ -142,3 +142,5 @@ This plot will update every simulation iteration while it is runnning, thus allo
 ![Mean Stabilization Output Plot](https://user-images.githubusercontent.com/17655405/44871182-f43b1100-ac46-11e8-9cd6-d0828e242190.png)
 
 <br>
+
+For this model, the mean stabilizes at approximately 375 runs, thus it can be concluded that 375 runs is optimal for this model and any runs beyond that value will not affect output data significantly.
