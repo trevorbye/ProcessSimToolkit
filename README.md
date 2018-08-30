@@ -6,7 +6,7 @@ This is a simplified tool for running stochastic discrete-event process simulati
 ## Lemonade Stand Tutorial
 
 Full code for this tutorial can be accessed [here.](https://github.com/trevorbye/ProcessSimToolkit/blob/master/LemonadeStandTutorial/LemonadeStandSim.py)
-<br>
+<br><br>
 
 ### Getting Started
 
