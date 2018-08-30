@@ -9,6 +9,7 @@ Full code for this tutorial can be accessed [here.](https://github.com/trevorbye
 <br><br>
 
 ### Getting Started
+<br>
 
 This is a tutorial for simulating the flow of customers through a lemonade stand. Although a simple example, it serves to illustrate the design pattern for this toolkit, and simply adding more Servers/Queues will allow for significantly more complex simulations. To get started, fork this entire project.
 
@@ -30,6 +31,7 @@ The `UtilityClasses` are various classes used as the building blocks for buildin
 <br>
 
 ### Building the System
+<br>
 
 Begin by defining an empty list, which will hold all `Server` and `PriorityQueue` objects we will build. Note: this list represents the sequence of events in the simulation, thus objects must be added in order of occurence within the system.
 
