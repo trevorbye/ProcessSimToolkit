@@ -71,7 +71,7 @@ arrival_queue = PriorityQueue(description="Lemonade Stand Line")
 ```
 <br>
 
-Now, customers that are created by our first server will be inserted into the `arrival_queue` to await being served lemonade. Similar to creating the arrival server, wrap the `arrival_queue` and append to `server_queue_wrapper_list`:
+Now, customers that are created by our arrival server will be inserted into the `arrival_queue` to await being served lemonade. Similar to creating the arrival server, wrap the `arrival_queue` and append to `server_queue_wrapper_list`:
 
 ```python
 queue_wrapper = ServerAndQueueWrapper(queue_object=arrival_queue)
