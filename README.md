@@ -42,7 +42,7 @@ server_queue_wrapper_list = []
 ```
 <br>
 
-Next we will begin building the logic that stochastically introduces customers into the system. First, we must define a `TimeRandomizer` object that will determine the distribution and it's parameters used for this sampling. In this case, we will use a normal distribution and state that customers arrive to the lemonade stand with a mean of every 20 seconds and a standard deviation of 5 seconds:
+Next we will begin building the logic that stochastically introduces customers into the system. First, we must define a `TimeRandomizer` object that will determine the distribution and its parameters used for this sampling. In this case, we will use a normal distribution and state that customers arrive to the lemonade stand with a mean of every 20 seconds and a standard deviation of 5 seconds:
 
 ```python
 arrival_time_randomizer = TimeRandomizer("normal", normal_mean=20, normal_stddev=5)
