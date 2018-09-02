@@ -64,7 +64,7 @@ server_queue_wrapper_list.append(arrival_wrapper)
 ```
 <br>
 
-In general, a queue should always immediately follow a server. Servers *can* be chained in succession, but if a customer cannot move from one server to the other due to capacity constraints, it will remain in the first server with a zero duration and will cause the simulation to run infinitely as no other events will be able to be processed. Thus, we will build a queue for the lemonade stand line, and it is as simple as defining a `PriorityQueue` object with an optional description parameter:
+In general, a queue should immediately follow a server. Servers *can* be chained in succession, but if a customer cannot move from one server to the other due to capacity constraints, it will remain in the first server with a zero duration and will cause the simulation to run infinitely as no other events will be able to be processed. Thus, we will build a queue for the lemonade stand line, and it is as simple as defining a `PriorityQueue` object with an optional description parameter:
 
 ```python
 arrival_queue = PriorityQueue(description="Lemonade Stand Line")
