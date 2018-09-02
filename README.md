@@ -123,7 +123,7 @@ sim.run_sim()
 
 ### Plot Output
 
-Running the model will produce a distribution plot of the duration (in seconds) customers spent in the system to get served lemonade:
+Running the model will produce a histogram plot of the duration (in seconds) customers spent in the system to get served lemonade:
 
 ![Histogram Output Plot](https://user-images.githubusercontent.com/17655405/44870628-8d692800-ac45-11e8-9391-9e9a2d9d0099.png)
 
