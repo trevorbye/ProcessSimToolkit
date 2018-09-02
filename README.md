@@ -86,7 +86,7 @@ main_process_randomizer = TimeRandomizer("triangular", triangle_min=30, triangle
 ```
 <br>
 
-Since this is not an arrival server, capacity can be set at any level. Since we have a quick rate of customers arriving, we will initially set the server capacity at `4` (4 employees serving lemonade). We'll also wrap the object and add to our list of processes:
+Since this is not an arrival server, capacity can be set at any level. Considering we have a quick rate of customers arriving, we will initially set the server capacity at `4` (4 employees serving lemonade). We'll also wrap the object and add to our list of processes:
 
 ```python
 main_process_server = Server(4, main_process_randomizer, "Main process Server (serving Lemonade)")
